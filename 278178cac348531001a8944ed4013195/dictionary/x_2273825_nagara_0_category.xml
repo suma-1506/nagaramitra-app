@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="22353d12c38cd31001a8944ed40131b8" label="Category" max_length="40" name="x_2273825_nagara_0_category" type="collection">
+        <element label="Keywords" max_length="500" name="keywords" type="string"/>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element label="SLA hours" max_length="40" name="sla_hours" type="integer"/>
+        <element label="Department" max_length="32" name="department" reference="x_2273825_nagara_0_department" type="reference"/>
+        <index name="index">
+            <element name="department"/>
+        </index>
+    </element>
+</database>

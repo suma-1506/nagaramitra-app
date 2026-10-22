@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="2ef26152c34cd31001a8944ed401311d" label="Ward" max_length="40" name="x_2273825_nagara_0_ward" type="collection">
+        <element label="Latitude" max_length="20" name="latitude" type="string"/>
+        <element label="Ward number" max_length="40" name="ward_number" type="integer"/>
+        <element label="Zone" max_length="32" name="zone" reference="x_2273825_nagara_0_zone" type="reference"/>
+        <element label="Longitude" max_length="20" name="longitude" type="string"/>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+        <index name="index">
+            <element name="zone"/>
+        </index>
+    </element>
+</database>
