@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="504b71dec3ccd31001a8944ed401316a" label="Officer" max_length="40" name="x_2273825_nagara_0_officer" type="collection">
+        <element label="Ward" max_length="32" name="ward" reference="x_2273825_nagara_0_ward" type="reference"/>
+        <element display="true" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <element label="Department" max_length="32" name="department" reference="x_2273825_nagara_0_department" type="reference"/>
+        <element label="Zone" max_length="32" name="zone" reference="x_2273825_nagara_0_zone" type="reference"/>
+        <element choice="1" label="Level" max_length="40" name="level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Ward" value="ward"/>
+                <element inactive_on_update="false" label="Zonal" value="zonal"/>
+                <element inactive_on_update="false" label="Commissioner" value="commissioner"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="department"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+        <index name="index3">
+            <element name="ward"/>
+        </index>
+        <index name="index4">
+            <element name="zone"/>
+        </index>
+    </element>
+</database>

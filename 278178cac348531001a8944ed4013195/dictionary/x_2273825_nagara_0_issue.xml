@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="956d7d92c300171001a8944ed401310d" label="Issue" max_length="40" name="x_2273825_nagara_0_issue" type="collection">
+        <element default="1" label="Report count" max_length="40" name="report_count" type="integer"/>
+        <element label="Category" max_length="32" name="category" reference="x_2273825_nagara_0_category" type="reference"/>
+        <element label="Ward" max_length="32" name="ward" reference="x_2273825_nagara_0_ward" type="reference"/>
+        <element default="javascript:getNextObjNumberPadded();" display="true" dynamic_default_value="fdcb83a85f220100a9ad2572f2b4773c" label="Number" max_length="40" name="number" type="string" use_dynamic_default="true"/>
+        <element label="Civic asset" max_length="32" name="civic_asset" reference="x_2273825_nagara_0_civic_asset" type="reference"/>
+        <element choice="1" default="open" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Closed" value="closed"/>
+                <element inactive_on_update="false" label="In Progress" value="in_progress"/>
+                <element inactive_on_update="false" label="Resolved" value="resolved"/>
+                <element inactive_on_update="false" label="Open" value="open"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="category"/>
+        </index>
+        <index name="index2">
+            <element name="civic_asset"/>
+        </index>
+        <index name="index3">
+            <element name="ward"/>
+        </index>
+    </element>
+</database>

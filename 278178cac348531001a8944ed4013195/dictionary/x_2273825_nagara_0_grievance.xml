@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="68a0865ac300171001a8944ed40131a1" extends="task" label="Grievance" max_length="40" name="x_2273825_nagara_0_grievance" type="collection">
+        <element label="Civic asset" max_length="32" name="civic_asset" reference="x_2273825_nagara_0_civic_asset" type="reference"/>
+        <element label="Department" max_length="32" name="department" reference="x_2273825_nagara_0_department" type="reference"/>
+        <element label="Resolution photo" max_length="40" name="resolution_photo" type="user_image"/>
+        <element label="Longitude" max_length="20" name="longitude" type="string"/>
+        <element label="Category" max_length="32" name="category" reference="x_2273825_nagara_0_category" type="reference"/>
+        <element label="Citizen confirmed" max_length="40" name="citizen_confirmed" type="boolean"/>
+        <element label="Issue" max_length="32" name="issue" reference="x_2273825_nagara_0_issue" type="reference"/>
+        <element choice="1" label="Language" max_length="40" name="language" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Hindi" value="hindi"/>
+                <element inactive_on_update="false" label="English" value="english"/>
+                <element inactive_on_update="false" label="Telugu" value="telugu"/>
+            </choice>
+        </element>
+        <element label="Citizen" max_length="32" name="citizen" reference="sys_user" type="reference"/>
+        <element label="Latitude" max_length="20" name="latitude" type="string"/>
+        <element label="Ward" max_length="32" name="ward" reference="x_2273825_nagara_0_ward" type="reference"/>
+    </element>
+</database>

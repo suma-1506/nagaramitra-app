@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="b7b8b1d2c3ccd31001a8944ed40131af" label="Civic Asset" max_length="40" name="x_2273825_nagara_0_civic_asset" type="collection">
+        <element label="Ward" max_length="32" name="ward" reference="x_2273825_nagara_0_ward" type="reference"/>
+        <element display="true" label="Asset ID" max_length="40" name="asset_id" type="string"/>
+        <element label="Latitude" max_length="20" name="latitude" type="string"/>
+        <element choice="1" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Pipe" value="pipe"/>
+                <element inactive_on_update="false" label="Drain" value="drain"/>
+                <element inactive_on_update="false" label="Road segment" value="road_segment"/>
+                <element inactive_on_update="false" label="Pole" value="pole"/>
+            </choice>
+        </element>
+        <element label="Longitude" max_length="20" name="longitude" type="string"/>
+        <index name="index">
+            <element name="ward"/>
+        </index>
+    </element>
+</database>
