@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>Views dashboards and reports across all zones, and receives final-level escalations</description>
+        <elevated_privilege>false</elevated_privilege>
+        <federated_id>+Az7vUzXxU0QyyuLcov2lv60s3pz+W4J638ZmGi/534=</federated_id>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_2273825_nagara_0.commissioner</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>commissioner</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-21 18:07:49</sys_created_on>
+        <sys_id>b38178cac348531001a8944ed40131cb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_2273825_nagara_0.commissioner</sys_name>
+        <sys_package display_value="NagaraMitra" source="x_2273825_nagara_0">278178cac348531001a8944ed4013195</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NagaraMitra">278178cac348531001a8944ed4013195</sys_scope>
+        <sys_update_name>sys_user_role_b38178cac348531001a8944ed40131cb</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-21 18:07:49</sys_updated_on>
+    </sys_user_role>
+</record_update>
