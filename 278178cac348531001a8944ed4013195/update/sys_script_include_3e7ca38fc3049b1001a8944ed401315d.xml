@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_2273825_nagara_0.GrievanceRouter</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>GrievanceRouter</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var GrievanceRouter = Class.create();
+GrievanceRouter.prototype = {
+  initialize: function () {},
+
+  // Wards further than this from the complaint are ignored (km)
+  MAX_DISTANCE_KM: 25,
+
+  // Main entry: returns {ward, category, department, group, note}
+  route: function (gr) {
+    var ward = this._findWard(gr);
+    var category = this._findCategory(gr);
+    var department = category ? category.getValue('department') : '';
+    var group = this._findGroup(ward, department);
+
+    var problems = [];
+    if (!ward) problems.push('no ward within ' + this.MAX_DISTANCE_KM + ' km or no usable location');
+    if (!category) problems.push('no category keyword match');
+    var note = problems.length
+      ? 'Auto-routing incomplete: ' + problems.join('; ') + '. Needs manual assignment.'
+      : 'Auto-routed by GrievanceRouter.';
+
+    return {
+      ward: ward ? ward.getUniqueValue() : '',
+      category: category ? category.getUniqueValue() : '',
+      department: department || '',
+      group: group || '',
+      note: note
+    };
+  },
+
+  _findWard: function (gr) {
+    var assetId = gr.getValue('civic_asset');
+    if (assetId) {
+      var asset = new GlideRecord('x_2273825_nagara_0_civic_asset');
+      if (asset.get(assetId) && asset.getValue('ward')) {
+        var w = new GlideRecord('x_2273825_nagara_0_ward');
+        if (w.get(asset.getValue('ward'))) return w;
+      }
+    }
+    var lat = parseFloat(gr.getValue('latitude'));
+    var lon = parseFloat(gr.getValue('longitude'));
+    if (isNaN(lat) || isNaN(lon)) return null;
+
+    var best = null, bestDist = Infinity;
+    var ward = new GlideRecord('x_2273825_nagara_0_ward');
+    ward.query();
+    while (ward.next()) {
+      var wl = parseFloat(ward.getValue('latitude'));
+      var wo = parseFloat(ward.getValue('longitude'));
+      if (isNaN(wl) || isNaN(wo)) continue;
+      var d = this._distanceKm(lat, lon, wl, wo);
+      if (d < bestDist) {
+        bestDist = d;
+        best = new GlideRecord('x_2273825_nagara_0_ward');
+        best.get(ward.getUniqueValue());
+      }
+    }
+    // Too far from every ward: leave it for an officer
+    if (bestDist > this.MAX_DISTANCE_KM) return null;
+    return best;
+  },
+
+  _findCategory: function (gr) {
+    var text = ((gr.getValue('short_description') || '') + ' ' + (gr.getValue('description') || '')).toLowerCase();
+    var best = null, bestScore = 0;
+    var cat = new GlideRecord('x_2273825_nagara_0_category');
+    cat.query();
+    while (cat.next()) {
+      var words = (cat.getValue('keywords') || '').toLowerCase().split(',');
+      var score = 0;
+      for (var i = 0; i < words.length; i++) {
+        var k = words[i].trim();
+        if (k && text.indexOf(k) > -1) score++;
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        best = new GlideRecord('x_2273825_nagara_0_category');
+        best.get(cat.getUniqueValue());
+      }
+    }
+    return best;
+  },
+
+  _findGroup: function (ward, departmentId) {
+    if (!ward || !departmentId) return '';
+    var dept = new GlideRecord('x_2273825_nagara_0_department');
+    if (!dept.get(departmentId)) return '';
+    var g = new GlideRecord('sys_user_group');
+    g.addQuery('name', ward.getValue('name').split(' - ')[0] + ' - ' + dept.getValue('name'));
+    g.query();
+    return g.next() ? g.getUniqueValue() : '';
+  },
+
+  // Great-circle distance in km (haversine)
+  _distanceKm: function (lat1, lon1, lat2, lon2) {
+    var R = 6371, rad = Math.PI / 180;
+    var dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  },
+
+  type: 'GrievanceRouter'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-10-25 10:19:18</sys_created_on>
+        <sys_id>3e7ca38fc3049b1001a8944ed401315d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>GrievanceRouter</sys_name>
+        <sys_package display_value="NagaraMitra" source="x_2273825_nagara_0">278178cac348531001a8944ed4013195</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NagaraMitra">278178cac348531001a8944ed4013195</sys_scope>
+        <sys_update_name>sys_script_include_3e7ca38fc3049b1001a8944ed401315d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-10-25 16:30:21</sys_updated_on>
+    </sys_script_include>
+</record_update>

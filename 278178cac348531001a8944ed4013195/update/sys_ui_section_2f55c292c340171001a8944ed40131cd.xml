@@ -4,321 +4,349 @@
             <element>number</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>964203cfc3cc5b1001a8944ed401317e</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>9f28c957c3cc9b1001a8944ed401313a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>assignment_group</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>9328c957c3cc9b1001a8944ed401313c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>assigned_to</element>
-            <position>1</position>
+            <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>9a4203cfc3cc5b1001a8944ed401317f</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>5f28c957c3cc9b1001a8944ed401313c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>cmdb_ci</element>
-            <position>2</position>
+            <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>564203cfc3cc5b1001a8944ed4013180</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>1b28c957c3cc9b1001a8944ed401313d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>active</element>
-            <position>3</position>
+            <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>124203cfc3cc5b1001a8944ed4013181</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>d328c957c3cc9b1001a8944ed401313e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>4</position>
+            <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>da4203cfc3cc5b1001a8944ed4013181</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>9f28c957c3cc9b1001a8944ed401313e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>priority</element>
-            <position>5</position>
+            <position>6</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>964203cfc3cc5b1001a8944ed4013182</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>5b28c957c3cc9b1001a8944ed401313f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>state</element>
-            <position>6</position>
+            <position>7</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>524203cfc3cc5b1001a8944ed4013183</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>1728c957c3cc9b1001a8944ed4013140</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>parent</element>
-            <position>7</position>
+            <position>8</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>1e4203cfc3cc5b1001a8944ed4013183</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>df28c957c3cc9b1001a8944ed4013140</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>8</position>
+            <position>9</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>d64203cfc3cc5b1001a8944ed4013184</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>9b28c957c3cc9b1001a8944ed4013141</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>short_description</element>
-            <position>9</position>
+            <position>10</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>924203cfc3cc5b1001a8944ed4013185</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>5728c957c3cc9b1001a8944ed4013142</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>citizen</element>
-            <position>10</position>
+            <position>11</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>5e4203cfc3cc5b1001a8944ed4013185</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>1328c957c3cc9b1001a8944ed4013143</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>category</element>
-            <position>11</position>
+            <position>12</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>1a4203cfc3cc5b1001a8944ed4013186</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>db28c957c3cc9b1001a8944ed4013143</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>ward</element>
-            <position>12</position>
+            <position>13</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>d24203cfc3cc5b1001a8944ed4013187</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>9728c957c3cc9b1001a8944ed4013144</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>department</element>
-            <position>13</position>
+            <position>14</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>9e4203cfc3cc5b1001a8944ed4013187</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>5328c957c3cc9b1001a8944ed4013145</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>civic_asset</element>
-            <position>14</position>
+            <position>15</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>5a4203cfc3cc5b1001a8944ed4013188</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>1f28c957c3cc9b1001a8944ed4013145</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>issue</element>
-            <position>15</position>
+            <position>16</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>164203cfc3cc5b1001a8944ed4013189</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>d728c957c3cc9b1001a8944ed4013146</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>latitude</element>
-            <position>16</position>
+            <position>17</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>de4203cfc3cc5b1001a8944ed4013189</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>9328c957c3cc9b1001a8944ed4013147</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>longitude</element>
-            <position>17</position>
+            <position>18</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>9a4203cfc3cc5b1001a8944ed401318a</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>5f28c957c3cc9b1001a8944ed4013147</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>language</element>
-            <position>18</position>
+            <position>19</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>564203cfc3cc5b1001a8944ed401318b</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>1b28c957c3cc9b1001a8944ed4013148</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>citizen_confirmed</element>
-            <position>19</position>
+            <position>20</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>124203cfc3cc5b1001a8944ed401318c</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>d328c957c3cc9b1001a8944ed4013149</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>resolution_photo</element>
-            <position>20</position>
+            <position>21</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>da4203cfc3cc5b1001a8944ed401318c</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>9f28c957c3cc9b1001a8944ed4013149</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>description</element>
-            <position>21</position>
+            <position>22</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>964203cfc3cc5b1001a8944ed401318d</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>5b28c957c3cc9b1001a8944ed401314a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>work_notes</element>
-            <position>22</position>
+            <position>23</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-10-25 07:14:04</sys_created_on>
-            <sys_id>524203cfc3cc5b1001a8944ed401318e</sys_id>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>1728c957c3cc9b1001a8944ed401314b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-10-25 07:14:04</sys_updated_on>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>comments_and_work_notes</element>
+            <position>24</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-25 16:59:02</sys_created_on>
+            <sys_id>df28c957c3cc9b1001a8944ed401314b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_2273825_nagara_0_grievance" sys_domain="global" view="Default view">2f55c292c340171001a8944ed40131cd</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-25 16:59:02</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
