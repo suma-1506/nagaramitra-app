@@ -16,7 +16,7 @@
         <column_label>Citizen</column_label>
         <comments/>
         <create_roles/>
-        <default_value/>
+        <default_value>javascript:gs.getUserID();</default_value>
         <defaultsort/>
         <delete_roles/>
         <dependent/>
@@ -24,7 +24,7 @@
         <display>false</display>
         <dynamic_creation>false</dynamic_creation>
         <dynamic_creation_script/>
-        <dynamic_default_value/>
+        <dynamic_default_value display_value="Me">90d1921e5f510100a9ad2572f2b477fe</dynamic_default_value>
         <dynamic_ref_qual/>
         <element>citizen</element>
         <element_reference>false</element_reference>
@@ -59,12 +59,12 @@
         <sys_scope display_value="NagaraMitra">278178cac348531001a8944ed4013195</sys_scope>
         <sys_update_name>sys_dictionary_x_2273825_nagara_0_grievance_citizen</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-22 18:45:16</sys_updated_on>
+        <sys_updated_on>2026-11-02 08:05:22</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
         <use_dependent_field>false</use_dependent_field>
-        <use_dynamic_default>false</use_dynamic_default>
+        <use_dynamic_default>true</use_dynamic_default>
         <use_reference_qualifier>simple</use_reference_qualifier>
         <virtual>false</virtual>
         <virtual_type>script</virtual_type>

@@ -14,7 +14,7 @@
                 <element inactive_on_update="false" label="Telugu" value="telugu"/>
             </choice>
         </element>
-        <element label="Citizen" max_length="32" name="citizen" reference="sys_user" type="reference"/>
+        <element default="javascript:gs.getUserID();" dynamic_default_value="90d1921e5f510100a9ad2572f2b477fe" label="Citizen" max_length="32" name="citizen" reference="sys_user" type="reference" use_dynamic_default="true"/>
         <element label="Latitude" max_length="20" name="latitude" type="string"/>
         <element label="Ward" max_length="32" name="ward" reference="x_2273825_nagara_0_ward" type="reference"/>
     </element>
