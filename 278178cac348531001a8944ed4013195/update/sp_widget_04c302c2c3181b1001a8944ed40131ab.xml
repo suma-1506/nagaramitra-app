@@ -1,16 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller = function() {
+        <client_script><![CDATA[api.controller = function($scope) {
   var c = this;
+  var NUM = /^-?\d+(\.\d+)?$/;
+  var MAX_SIDE = 1280;
+  var MAX_ORIGINAL_BYTES = 20 * 1024 * 1024;
+
   c.form = {
     short_description: '',
     description: '',
-    language: c.data.defaultLanguage || ''
+    language: c.data.defaultLanguage || '',
+    latitude: '',
+    longitude: ''
   };
   c.error = '';
   c.result = null;
   c.submitting = false;
+  c.locating = false;
+  c.locationMsg = '';
+  c.photo = null;
+  c.photoBusy = false;
+  c.photoMsg = '';
+
+  c.useLocation = function() {
+    c.locationMsg = '';
+    if (!navigator.geolocation) {
+      c.locationMsg = 'Your browser cannot share its location. Please type the coordinates instead.';
+      return;
+    }
+    c.locating = true;
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      $scope.$evalAsync(function() {
+        c.form.latitude = pos.coords.latitude.toFixed(6);
+        c.form.longitude = pos.coords.longitude.toFixed(6);
+        var acc = Math.round(pos.coords.accuracy || 0);
+        c.locationMsg = 'Location captured' + (acc ? ' (accuracy about ' + acc + ' m).' : '.');
+        if (acc > 1000) {
+          c.locationMsg += ' This reading is weak. Please check the numbers or type the coordinates yourself.';
+        }
+        c.locating = false;
+      });
+    }, function(err) {
+      $scope.$evalAsync(function() {
+        c.locating = false;
+        if (err && err.code === 1) {
+          c.locationMsg = 'Location permission was denied. Please type the coordinates instead.';
+        } else {
+          c.locationMsg = 'We could not get your location. Please type the coordinates instead.';
+        }
+      });
+    }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
+  };
+
+  // Photo: pick a file, shrink it, re-encode as JPEG
+  c.choosePhoto = function() {
+    c.photoMsg = '';
+    var inp = document.createElement('input');
+    inp.type = 'file';
+    inp.accept = 'image/*';
+    inp.onchange = function() {
+      var f = inp.files && inp.files[0];
+      if (f) {
+        $scope.$evalAsync(function() { processPhoto(f); });
+      }
+    };
+    inp.click();
+  };
+
+  c.removePhoto = function() {
+    c.photo = null;
+    c.photoMsg = '';
+  };
+
+  function photoFail(msg) {
+    $scope.$evalAsync(function() {
+      c.photoBusy = false;
+      c.photoMsg = msg;
+    });
+  }
+
+  function processPhoto(file) {
+    if (!/^image\//.test(file.type)) {
+      c.photoMsg = 'Please choose an image file.';
+      return;
+    }
+    if (file.size > MAX_ORIGINAL_BYTES) {
+      c.photoMsg = 'That photo is too large. Please choose one under 20 MB.';
+      return;
+    }
+    c.photoBusy = true;
+    var reader = new FileReader();
+    reader.onerror = function() { photoFail('We could not read that file. Please try another photo.'); };
+    reader.onload = function(e) {
+      var img = new Image();
+      img.onerror = function() { photoFail('We could not open that image. Please try a JPEG or PNG photo.'); };
+      img.onload = function() {
+        var scale = Math.min(1, MAX_SIDE / Math.max(img.width, img.height));
+        var cv = document.createElement('canvas');
+        cv.width = Math.max(1, Math.round(img.width * scale));
+        cv.height = Math.max(1, Math.round(img.height * scale));
+        var ctx = cv.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.drawImage(img, 0, 0, cv.width, cv.height);
+        var url = cv.toDataURL('image/jpeg', 0.75);
+        $scope.$evalAsync(function() {
+          c.photo = { name: file.name, dataUrl: url, b64: url.split(',')[1] };
+          c.photoBusy = false;
+          c.photoMsg = '';
+        });
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Returns an error message, or '' if the location is fine (or left blank)
+  function checkLocation() {
+    var lat = (c.form.latitude || '').trim();
+    var lon = (c.form.longitude || '').trim();
+    if (!lat && !lon) return '';
+    if (!lat || !lon) return 'Please enter both latitude and longitude, or leave both blank.';
+    if (!NUM.test(lat) || !NUM.test(lon)) return 'Latitude and longitude must be numbers, for example 17.686700 and 83.218300.';
+    if (Math.abs(parseFloat(lat)) > 90) return 'Latitude must be between -90 and 90.';
+    if (Math.abs(parseFloat(lon)) > 180) return 'Longitude must be between -180 and 180.';
+    return '';
+  }
 
   c.submit = function() {
     c.error = '';
@@ -18,17 +134,25 @@
       c.error = 'Please enter a short description.';
       return;
     }
+    var locErr = checkLocation();
+    if (locErr) {
+      c.error = locErr;
+      return;
+    }
     c.submitting = true;
     c.server.get({
       action: 'submit',
       short_description: c.form.short_description,
       description: c.form.description,
-      language: c.form.language
+      language: c.form.language,
+      latitude: (c.form.latitude || '').trim(),
+      longitude: (c.form.longitude || '').trim(),
+      photo_base64: c.photo ? c.photo.b64 : ''
     }).then(function(resp) {
       c.submitting = false;
       var r = resp.data || {};
       if (r.success) {
-        c.result = { number: r.number };
+        c.result = { number: r.number, photoAttempted: !!r.photoAttempted, photoSaved: !!r.photoSaved };
       } else {
         c.error = r.error || 'Something went wrong. Please try again.';
       }
@@ -38,9 +162,14 @@
   c.reset = function() {
     c.result = null;
     c.error = '';
+    c.locationMsg = '';
+    c.photo = null;
+    c.photoMsg = '';
     c.form.short_description = '';
     c.form.description = '';
     c.form.language = c.data.defaultLanguage || '';
+    c.form.latitude = '';
+    c.form.longitude = '';
   };
 };]]></client_script>
         <controller_as>c</controller_as>
@@ -60,6 +189,8 @@
         <roles/>
         <script><![CDATA[(function() {
   var TABLE = 'x_2273825_nagara_0_grievance';
+  var NUM = /^-?\d+(\.\d+)?$/;
+  var MAX_PHOTO_B64 = 2500000; // about 1.8 MB of image data
 
   // Build the language dropdown from the field's own choices
   data.languages = [];
@@ -76,6 +207,15 @@
     ch.query();
     while (ch.next()) {
       data.languages.push({ value: ch.getValue('value'), label: ch.getValue('label') });
+    }
+    // No default on the field: use English if it is one of the choices
+    if (!data.defaultLanguage) {
+      for (var d = 0; d < data.languages.length; d++) {
+        if (data.languages[d].value === 'english') {
+          data.defaultLanguage = 'english';
+          break;
+        }
+      }
     }
   }
 
@@ -102,18 +242,66 @@
       lang = data.defaultLanguage;
     }
 
+    // Location: both or neither, numeric, in range. Stored as 6-decimal strings.
+    var latIn = ('' + (input.latitude || '')).trim();
+    var lonIn = ('' + (input.longitude || '')).trim();
+    var latStr = '', lonStr = '';
+    if (latIn || lonIn) {
+      if (!latIn || !lonIn || !NUM.test(latIn) || !NUM.test(lonIn)) {
+        data.success = false;
+        data.error = 'Please enter a valid latitude and longitude, or leave both blank.';
+        return;
+      }
+      var latNum = parseFloat(latIn);
+      var lonNum = parseFloat(lonIn);
+      if (Math.abs(latNum) > 90 || Math.abs(lonNum) > 180) {
+        data.success = false;
+        data.error = 'The latitude or longitude is outside the valid range.';
+        return;
+      }
+      latStr = latNum.toFixed(6);
+      lonStr = lonNum.toFixed(6);
+    }
+
+    // Photo: the browser sends a JPEG as base64. Check it before creating anything.
+    var photo = ('' + (input.photo_base64 || '')).trim();
+    if (photo) {
+      if (photo.length > MAX_PHOTO_B64 || !/^[A-Za-z0-9+\/]+={0,2}$/.test(photo) || photo.indexOf('/9j/') !== 0) {
+        data.success = false;
+        data.error = 'The photo could not be accepted. Please choose a smaller JPEG or PNG image.';
+        return;
+      }
+    }
+
     // Only these fields are set here. Routing fields are left to the router.
     var gr = new GlideRecord(TABLE);
     gr.initialize();
     gr.short_description = shortDesc;
     gr.description = desc;
     if (lang) gr.language = lang;
+    if (latStr) {
+      gr.latitude = latStr;
+      gr.longitude = lonStr;
+    }
     gr.citizen = gs.getUserID();
     var sysId = gr.insert();
 
     if (sysId) {
       data.success = true;
       data.number = gr.getValue('number');
+
+      // Attach the photo after the record exists. A photo problem must not lose the complaint.
+      data.photoAttempted = !!photo;
+      data.photoSaved = false;
+      if (photo) {
+        try {
+          var att = new GlideSysAttachment();
+          var attId = att.writeBase64(gr, data.number + '-photo.jpg', 'image/jpeg', photo);
+          data.photoSaved = !!attId;
+        } catch (e) {
+          gs.error('NagaraMitra photo attach failed for ' + data.number + ': ' + e);
+        }
+      }
     } else {
       data.success = false;
       data.error = 'We could not register your complaint. Please try again.';
@@ -125,14 +313,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-11-03 10:22:37</sys_created_on>
         <sys_id>04c302c2c3181b1001a8944ed40131ab</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>NagaraMitra Submit Grievance</sys_name>
         <sys_package display_value="NagaraMitra" source="x_2273825_nagara_0">278178cac348531001a8944ed4013195</sys_package>
         <sys_policy/>
         <sys_scope display_value="NagaraMitra">278178cac348531001a8944ed4013195</sys_scope>
         <sys_update_name>sp_widget_04c302c2c3181b1001a8944ed40131ab</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-11-03 10:24:53</sys_updated_on>
+        <sys_updated_on>2026-11-03 12:57:47</sys_updated_on>
         <template><![CDATA[<div class="panel panel-default" style="max-width:720px;margin:24px auto;">
   <div class="panel-heading">
     <h3 class="panel-title">Report a civic problem</h3>
@@ -142,6 +330,10 @@
     <div ng-if="c.result" class="alert alert-success">
       <strong>Thank you.</strong> Your complaint has been registered.
       Your reference number is <strong>{{c.result.number}}</strong>.
+      <div ng-if="c.result.photoAttempted && c.result.photoSaved" style="margin-top:8px;">Your photo was attached.</div>
+      <div ng-if="c.result.photoAttempted && !c.result.photoSaved" class="text-warning" style="margin-top:8px;">
+        We could not attach your photo, but your complaint is registered.
+      </div>
       <div style="margin-top:12px;">
         <button type="button" class="btn btn-default" ng-click="c.reset()">Report another problem</button>
       </div>
@@ -165,13 +357,50 @@
       </div>
 
       <div class="form-group">
+        <label>Where is the problem?</label>
+        <div style="margin-bottom:8px;">
+          <button type="button" class="btn btn-default" ng-click="c.useLocation()" ng-disabled="c.locating">
+            {{c.locating ? 'Getting your location...' : 'Use my current location'}}
+          </button>
+        </div>
+        <div ng-if="c.locationMsg" class="help-block">{{c.locationMsg}}</div>
+        <div class="row">
+          <div class="col-xs-6">
+            <input type="text" class="form-control" inputmode="decimal" maxlength="12"
+                   ng-model="c.form.latitude" placeholder="Latitude, e.g. 17.686700"
+                   aria-label="Latitude" />
+          </div>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" inputmode="decimal" maxlength="12"
+                   ng-model="c.form.longitude" placeholder="Longitude, e.g. 83.218300"
+                   aria-label="Longitude" />
+          </div>
+        </div>
+        <p class="help-block">Optional, but it lets us send your complaint to the right ward automatically. You can also type the coordinates yourself.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Photo (optional)</label>
+        <div>
+          <button type="button" class="btn btn-default" ng-click="c.choosePhoto()" ng-disabled="c.photoBusy">
+            {{c.photoBusy ? 'Preparing photo...' : (c.photo ? 'Change photo' : 'Add a photo')}}
+          </button>
+          <button type="button" class="btn btn-link" ng-if="c.photo" ng-click="c.removePhoto()">Remove</button>
+        </div>
+        <div ng-if="c.photoMsg" class="help-block" style="color:#c9302c;font-weight:600;">{{c.photoMsg}}</div>
+        <div ng-if="c.photo" style="margin-top:8px;">
+          <img ng-src="{{c.photo.dataUrl}}" alt="Photo preview" style="max-width:240px;max-height:180px;border:1px solid #ddd;border-radius:4px;" />
+        </div>
+      </div>
+
+      <div class="form-group">
         <label for="nm-lang">Language for updates</label>
         <select id="nm-lang" class="form-control"
                 ng-model="c.form.language"
                 ng-options="l.value as l.label for l in c.data.languages"></select>
       </div>
 
-      <button type="button" class="btn btn-primary" ng-click="c.submit()" ng-disabled="c.submitting">
+      <button type="button" class="btn btn-primary" ng-click="c.submit()" ng-disabled="c.submitting || c.photoBusy">
         {{c.submitting ? 'Submitting...' : 'Submit complaint'}}
       </button>
     </div>

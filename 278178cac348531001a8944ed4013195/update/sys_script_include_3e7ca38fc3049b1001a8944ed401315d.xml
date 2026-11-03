@@ -26,6 +26,7 @@ GrievanceRouter.prototype = {
     var problems = [];
     if (!ward) problems.push('no ward within ' + this.MAX_DISTANCE_KM + ' km or no usable location');
     if (!category) problems.push('no category keyword match');
+    if (ward && department && !group) problems.push('no assignment group found for this ward and department');
     var note = problems.length
       ? 'Auto-routing incomplete: ' + problems.join('; ') + '. Needs manual assignment.'
       : 'Auto-routed by GrievanceRouter.';
@@ -118,13 +119,13 @@ GrievanceRouter.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-10-25 10:19:18</sys_created_on>
         <sys_id>3e7ca38fc3049b1001a8944ed401315d</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>GrievanceRouter</sys_name>
         <sys_package display_value="NagaraMitra" source="x_2273825_nagara_0">278178cac348531001a8944ed4013195</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="NagaraMitra">278178cac348531001a8944ed4013195</sys_scope>
         <sys_update_name>sys_script_include_3e7ca38fc3049b1001a8944ed401315d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-10-25 16:30:21</sys_updated_on>
+        <sys_updated_on>2026-11-03 11:22:44</sys_updated_on>
     </sys_script_include>
 </record_update>
