@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_2273825_nagara_0.GrievanceEscalator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>GrievanceEscalator</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var GrievanceEscalator = Class.create();
+GrievanceEscalator.prototype = {
+    initialize: function() {},
+
+    // Moves the grievance one level up. Returns {ok, level, msg}.
+    escalate: function(gr, reason) {
+        var current = gr.getValue('escalation_level') || 'ward';
+        if (current === 'commissioner')
+            return {ok: false, level: current, msg: 'Already at Commissioner level'};
+
+        var next = (current === 'ward') ? 'zonal' : 'commissioner';
+        var note = '';
+        var officer = null;
+
+        if (next === 'zonal') {
+            var zone = this._zoneOf(gr);
+            officer = zone ? this._find('zonal', zone) : null;
+            if (!officer) {
+                next = 'commissioner';
+                note = ' (no zonal officer for this zone, sent to Commissioner)';
+            }
+        }
+        if (next === 'commissioner')
+            officer = this._find('commissioner', null);
+
+        if (!officer)
+            return {ok: false, level: current, msg: 'No officer found for level ' + next};
+
+        gr.setValue('escalation_level', next);
+        gr.setValue('escalated_on', new GlideDateTime());
+        gr.setValue('assigned_to', officer.getValue('user'));
+        gr.work_notes = 'Escalated from ' + current + ' to ' + next + ' level. Reason: ' +
+            (reason || 'SLA breached') + note;
+        gr.update();
+        return {ok: true, level: next, msg: 'Escalated to ' + officer.user.getDisplayValue()};
+    },
+
+    _zoneOf: function(gr) {
+        var ward = gr.ward.getRefRecord();
+        return (ward && ward.isValidRecord()) ? ward.getValue('zone') : null;
+    },
+
+    _find: function(level, zone) {
+        var o = new GlideRecord('x_2273825_nagara_0_officer');
+        o.addQuery('level', level);
+        if (zone) o.addQuery('zone', zone);
+        o.setLimit(1);
+        o.query();
+        return o.next() ? o : null;
+    },
+
+    type: 'GrievanceEscalator'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-11-05 09:43:59</sys_created_on>
+        <sys_id>f06dccbac3905f1001a8944ed4013144</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GrievanceEscalator</sys_name>
+        <sys_package display_value="NagaraMitra" source="x_2273825_nagara_0">278178cac348531001a8944ed4013195</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NagaraMitra">278178cac348531001a8944ed4013195</sys_scope>
+        <sys_update_name>sys_script_include_f06dccbac3905f1001a8944ed4013144</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-11-05 09:43:59</sys_updated_on>
+    </sys_script_include>
+</record_update>

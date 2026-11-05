@@ -5,6 +5,7 @@
         <element label="Resolution photo" max_length="40" name="resolution_photo" type="user_image"/>
         <element label="Longitude" max_length="20" name="longitude" type="string"/>
         <element label="Category" max_length="32" name="category" reference="x_2273825_nagara_0_category" type="reference"/>
+        <element label="Escalated On" max_length="40" name="escalated_on" type="glide_date_time"/>
         <element label="Citizen confirmed" max_length="40" name="citizen_confirmed" type="boolean"/>
         <element label="Issue" max_length="32" name="issue" reference="x_2273825_nagara_0_issue" type="reference"/>
         <element choice="1" label="Language" max_length="40" name="language" type="choice">
@@ -17,5 +18,12 @@
         <element default="javascript:gs.getUserID();" dynamic_default_value="90d1921e5f510100a9ad2572f2b477fe" label="Citizen" max_length="32" name="citizen" reference="sys_user" type="reference" use_dynamic_default="true"/>
         <element label="Latitude" max_length="20" name="latitude" type="string"/>
         <element label="Ward" max_length="32" name="ward" reference="x_2273825_nagara_0_ward" type="reference"/>
+        <element choice="1" default="ward" label="Escalation Level" max_length="40" name="escalation_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Commissioner" sequence="300" value="commissioner"/>
+                <element inactive_on_update="false" label="Ward" sequence="100" value="ward"/>
+                <element inactive_on_update="false" label="Zonal" sequence="200" value="zonal"/>
+            </choice>
+        </element>
     </element>
 </database>
